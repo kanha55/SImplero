@@ -11,7 +11,15 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end 
-  resources :groups
+  resources :groups do
+    collection do
+      get :created_by_me
+      get :where_i_am_member
+    end  
+    member do
+      get :join_group
+    end
+  end  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
