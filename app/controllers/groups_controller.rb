@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+	before_action :find_group, only: [:show, :edit]
 	def index
 		@groups = Group.all
 	end
@@ -16,6 +17,22 @@ class GroupsController < ApplicationController
 		else
 			render :new	
 		end
+	end
+
+	def edit
+	end
+
+  def update
+    @group = Group.find_by_id(params[:id])
+    if @group.update(group_params)
+      redirect_to groups_path
+    else
+      render :new 
+    end
+  end  
+
+	def show
+
 	end
 
 	def created_by_me
@@ -37,5 +54,9 @@ class GroupsController < ApplicationController
 
 	def group_params
 		params.require(:group).permit(:name)
-	end		
+	end	
+
+	def find_group
+		@group = Group.find_by_id(params[:id])
+	end	
 end
