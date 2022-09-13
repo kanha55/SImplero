@@ -1,0 +1,36 @@
+<div class="bg-white  float-right p-5 text-xl">
+	<%= link_to "Groups", "/groups", class: "mr-5 underline" %>	
+	<%= link_to "Signout", destroy_user_session_path, :method => :delete %>	
+</div>
+<div class="p-10  ml-5">
+	<h2 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Groups</h2>
+</div>
+
+<nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+  <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+  	<ul class="flex ml-10">
+  	  <li class="flex-1 mr-2">
+				<%= link_to "All Groups", "/groups", class: "text-center block border border-blue-700 rounded py-2 px-4 bg-blue-700 hover:bg-blue-700 text-white" %>
+  	  </li>
+  	  <li class="flex-1 mr-2">
+				<%= link_to "Created by me", "/groups", class: "text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 w-40 hover:bg-blue-700 text-white" %>
+  	  </li>
+  	  <li class="flex-1 mr-2">
+				<%= link_to "Where I am member", "/groups", class: "text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 w-60 hover:bg-blue-700 text-white" %>
+  	  </li>
+  	</ul>
+  	<ul class="flex float-right">
+  	  <li class="flex-1 mr-2">
+				<%= link_to "+ Create a new Group", "/groups/new", class: "text-center block border border-yellow-500 rounded py-2 px-4 bg-yellow-500 hover:bg-yellow-700 text-white" %>
+  	  </li>
+  	</ul>
+  </div>
+</nav>
+<div class="text-center">
+	<% @groups.each do |group| %>
+		<div class="grid grid-cols-8 gap-8 mt-10 ml-56">
+			<div class="font-medium leading-tight text-2xl"> <%= group.name %></div>
+			<div> <%= link_to "Join", "#", class: "text-center block border border-orange-500 rounded py-2 px-4 bg-orange-500 hover:bg-orange-700 text-white" %></div>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="p-10  ml-5">
+	<h2 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Create/Edit Groups</h2>
+</div>
+<div class="">
+	<%= form_with model: @group, url: groups_path, method: :post, local: true do |form| %>
+	<div class=" p-10 ml-10">
+		<span class="font-medium leading-tight text-3xl">Group name </span>
+		<p>People will see this<br> name before joining<br> your group</p>
+		<%= form.text_field :name, placeholder: "My Group", class: "ml-40" %>
+	</div>
+	<div class="">
+			<%= form.submit "Create/Save", class: "p-10 ml-40 text-center block border border-yellow-500 rounded py-2 px-4 bg-yellow-500 hover:bg-yellow-700 text-white"%>
+		<% end %>
+	</div>
+</div>
