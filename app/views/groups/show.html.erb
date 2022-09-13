@@ -1,4 +1,20 @@
-<div class="p-10  ml-5">
-  <h2 class="font-medium leading-tight text-3xl mt-0 mb-2 text-blue-600">My Group <%= link_to '<i class="fa fa-cog" aria-hidden="true"></i>'.html_safe, edit_group_path(@group.id) %></h2>
-  
+
+<div class="grid grid-cols-5 gap-3">
+  <div class="col-span-4">
+    <div class="p-10  ml-5">
+      <h2 class="font-medium leading-tight text-3xl mt-0 mb-2 text-blue-600">My Group <%= link_to '<i class="fa fa-cog" aria-hidden="true"></i>'.html_safe, edit_group_path(@group.id) %></h2>
+
+    </div>
+  </div>
+  <div class="p-10  mr-5">
+    <h2 class="font-medium leading-tight text-3xl mt-0 mb-2 text-blue-600">Members</h2>
+    <% @group.members.each do |member| %>
+      <% if member.id != current_user.id %>
+        <h2 class="font-medium leading-tight text-xl mt-0 mb-2"><%= member.name %> 
+          <% if current_user.owner_group?(@group) %>
+            <%= link_to '<i class="fa fa-times" aria-hidden="true"></i>'.html_safe, remove_member_group_path(@group.id, user_id: member.id) %></h2>
+          <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

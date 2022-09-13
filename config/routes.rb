@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :where_i_am_member
     end  
     member do
+      get :remove_member
       get :join_group
     end
   end  

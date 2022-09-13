@@ -46,6 +46,13 @@ class GroupsController < ApplicationController
 		end
 	end
 
+  def remove_member
+    membership = Membership.find_by(user_id: params[:user_id], group_id: params[:id])
+    if membership.delete
+      redirect_to group_path(params[:id])
+    end
+  end 
+
 	def where_i_am_member
 		@groups = current_user.groups
 	end
